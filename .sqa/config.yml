@@ -1,0 +1,90 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: main
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/KnowledgeCaptureAndDiscovery/somef:
+      branch: master
+      repo: https://github.com/KnowledgeCaptureAndDiscovery/somef
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/KnowledgeCaptureAndDiscovery/somef git:
+        commands:
+        - /usr/bin/env sh .sqa/script.muzzy-magnolia-termite.sh
+        container: qc.acc_shaggy-ruby-worm
+  QC.Doc:
+    repos:
+      github.com/KnowledgeCaptureAndDiscovery/somef find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.wiggy-white-buffalo.sh
+        container: qc.doc_pokey-purple-barb
+      github.com/KnowledgeCaptureAndDiscovery/somef git:
+        commands:
+        - /usr/bin/env sh .sqa/script.shabby-goldenrod-crane.sh
+        container: qc.doc_lanky-gamboge-hyena
+      github.com/KnowledgeCaptureAndDiscovery/somef markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.lanky-ruby-lemming.sh
+        container: qc.doc_snoopy-russet-heron
+      github.com/KnowledgeCaptureAndDiscovery/somef restructuredtext-lint:
+        commands:
+        - /usr/bin/env sh .sqa/script.stuffy-mauve-snail.sh
+        container: qc.doc_scaly-magenta-bison
+  QC.Lic:
+    repos:
+      github.com/KnowledgeCaptureAndDiscovery/somef licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.jumpy-malachite-uakari.sh
+        container: qc.lic_gimpy-silver-duck
+  QC.Met:
+    repos:
+      github.com/KnowledgeCaptureAndDiscovery/somef cff-converter-python:
+        commands:
+        - /usr/bin/env sh .sqa/script.snazzy-viridian-forest.sh
+        container: qc.met_jumpy-sepia-abyssinian
+      github.com/KnowledgeCaptureAndDiscovery/somef validate_codemeta:
+        commands:
+        - /usr/bin/env sh .sqa/script.lanky-saffron-rattlesnake.sh
+        container: qc.met_scaly-lime-neanderthal
+  QC.Sec:
+    repos:
+      github.com/KnowledgeCaptureAndDiscovery/somef bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.bumpy-jade-tang.sh
+        container: qc.sec_skinny-seashell-gecko
+  QC.Sty:
+    repos:
+      github.com/KnowledgeCaptureAndDiscovery/somef flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.clammy-tan-dollar.sh
+        container: qc.sty_crappy-heliotrope-camel
+      github.com/KnowledgeCaptureAndDiscovery/somef hadolint:
+        commands:
+        - /usr/bin/env sh .sqa/script.pretty-dandelion-whippet.sh
+        container: qc.sty_boozy-chocolate-toucan
+      github.com/KnowledgeCaptureAndDiscovery/somef jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.flabby-lemon-capybara.sh
+        container: qc.sty_gimpy-celadon-penguin
+      github.com/KnowledgeCaptureAndDiscovery/somef oclint:
+        commands:
+        - /usr/bin/env sh .sqa/script.crabby-pink-serval.sh
+        container: qc.sty_stinky-scarlet-ladybird
+  QC.Uni:
+    repos:
+      github.com/KnowledgeCaptureAndDiscovery/somef pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.flabby-persimmon-barracuda.sh
+        container: qc.uni_sickly-tan-snail
+  QC.Ver:
+    repos:
+      github.com/KnowledgeCaptureAndDiscovery/somef get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.ugly-chocolate-cockroach.sh
+        container: qc.ver_frumpy-harlequin-crab
+timeout: 5400
